@@ -37,9 +37,9 @@ function showLoading(){
             setTimeout(()=>{
               document.getElementById("loading").style.display="none";
 
-    startFireworks();
+   
               //  showScene("welcome");
-//startBirthdayFireworks();
+startBirthdayFireworks();
                 //startTyping();
 
             },600);
@@ -50,177 +50,110 @@ function showLoading(){
 
 }
 /*fire work */
-const canvas = document.getElementById("fireworksCanvas");
-const ctx = canvas.getContext("2d");
+function startBirthdayFireworks() {
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+    const canvas = document.getElementById("fireworksCanvas");
+    const ctx = canvas.getContext("2d");
 
-window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-});
 
-const fireworks = [];
+    window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
 
-class Firework {
+    let fireworks = [];
 
-    constructor() {
+    class Firework{
+        constructor(){
+            this.x=Math.random()*canvas.width;
+            this.y=canvas.height;
+            this.targetY=Math.random()*canvas.height/2;
+            this.color=`hsl(${Math.random()*360},100%,60%)`;
+            this.exploded=false;
+            this.particles=[];
+        }
 
-        this.x = Math.random() * canvas.width;
-        this.y = canvas.height;
+        update(){
+            if(!this.exploded){
+                this.y-=6;
+                if(this.y<=this.targetY){
+                    this.explode();
+                }
+            }else{
+                this.particles.forEach((p,index)=>{
+                    p.x+=p.vx;
+                    p.y+=p.vy;
+                    p.life--;
 
-        this.targetY = 100 + Math.random() * (canvas.height / 2);
-
-        this.color = `hsl(${Math.random() * 360},100%,60%)`;
-
-        this.particles = [];
-
-        this.exploded = false;
-
-    }
-
-    update() {
-
-        if (!this.exploded) {
-
-            this.y -= 8;
-
-            if (this.y <= this.targetY) {
-
-                this.explode();
-                this.exploded = true;
-
+                    if(p.life<=0){
+                        this.particles.splice(index,1);
+                    }
+                });
             }
-
         }
 
-        for (let i = this.particles.length - 1; i >= 0; i--) {
-
-            const p = this.particles[i];
-
-            p.x += p.vx;
-            p.y += p.vy;
-
-            p.vy += 0.05;
-
-            p.alpha -= 0.015;
-
-            if (p.alpha <= 0) {
-
-                this.particles.splice(i, 1);
-
+        draw(){
+            if(!this.exploded){
+                ctx.beginPath();
+                ctx.arc(this.x,this.y,3,0,Math.PI*2);
+                ctx.fillStyle="white";
+                ctx.fill();
+            }else{
+                this.particles.forEach(p=>{
+                    ctx.beginPath();
+                    ctx.arc(p.x,p.y,2,0,Math.PI*2);
+                    ctx.fillStyle=this.color;
+                    ctx.fill();
+                });
             }
-
         }
 
+        explode(){
+            this.exploded=true;
+
+            for(let i=0;i<80;i++){
+                let angle=Math.random()*Math.PI*2;
+                let speed=Math.random()*5+2;
+
+                this.particles.push({
+                    x:this.x,
+                    y:this.y,
+                    vx:Math.cos(angle)*speed,
+                    vy:Math.sin(angle)*speed,
+                    life:80
+                });
+            }
+        }
     }
 
-    explode() {
+    function animate(){
 
-        for (let i = 0; i < 100; i++) {
+        ctx.fillStyle="rgba(0,0,0,0.2)";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
 
-            const angle = Math.random() * Math.PI * 2;
-            const speed = Math.random() * 5 + 2;
-
-            this.particles.push({
-
-                x: this.x,
-                y: this.y,
-
-                vx: Math.cos(angle) * speed,
-                vy: Math.sin(angle) * speed,
-
-                alpha: 1
-
-            });
-
+        if(Math.random()<0.08){
+            fireworks.push(new Firework());
         }
 
-    }
+        fireworks.forEach((fw,index)=>{
+            fw.update();
+            fw.draw();
 
-    draw() {
-
-        if (!this.exploded) {
-
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
-
-            ctx.fillStyle = this.color;
-            ctx.fill();
-
-        }
-
-        this.particles.forEach(p => {
-
-            ctx.globalAlpha = p.alpha;
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
-
-            ctx.fillStyle = this.color;
-            ctx.fill();
-
+            if(fw.exploded && fw.particles.length===0){
+                fireworks.splice(index,1);
+            }
         });
 
-        ctx.globalAlpha = 1;
-
+        requestAnimationFrame(animate);
     }
 
-}
+    animate();
 
-let animationId;
-
-function animateFireworks() {
-
-    ctx.fillStyle = "rgba(0,0,0,.18)";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-
-    if (Math.random() < 0.08) {
-
-        fireworks.push(new Firework());
-
-    }
-
-    for (let i = fireworks.length - 1; i >= 0; i--) {
-
-        fireworks[i].update();
-        fireworks[i].draw();
-
-        if (fireworks[i].exploded && fireworks[i].particles.length === 0) {
-
-            fireworks.splice(i,1);
-
-        }
-
-    }
-
-    animationId = requestAnimationFrame(animateFireworks);
-
-}
-
-function startFireworks(){
-
-    canvas.style.display = "block";
-
-    animateFireworks();
-
-    setTimeout(() => {
-
-        cancelAnimationFrame(animationId);
-
-        canvas.style.opacity = "0";
-        canvas.style.transition = "opacity 2s ease";
-
-        setTimeout(() => {
-
-            canvas.style.display = "none";
-
-            // Show Birthday Screen
-            document.getElementById("birthdaySection").style.display = "flex";
-
-        },2000);
-
-    },8000);
+    setTimeout(()=>{
+        canvas.style.opacity="0";
+        document.getElementById("birthdayMessage").classList.add("showBirthday");
+    },7000);
 
 }
