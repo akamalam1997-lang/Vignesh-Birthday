@@ -256,9 +256,11 @@ translateY(-120px);
 
 #fireworksCanvas{
     position:fixed;
-    inset:0;
+    top:0;
+    left:0;
     width:100%;
     height:100%;
-    background:#000;
     z-index:9999;
+    pointer-events:none;
+    transition:opacity 3s;
 }
