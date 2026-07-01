@@ -49,7 +49,10 @@ startBirthdayFireworks();
     },30);
 
 }
+
 /*fire work */
+
+
 function startBirthdayFireworks() {
 
     const canvas = document.getElementById("fireworksCanvas");
@@ -151,9 +154,58 @@ function startBirthdayFireworks() {
 
     animate();
 
-    setTimeout(()=>{
-        canvas.style.opacity="0";
-        document.getElementById("birthdayMessage").classList.add("showBirthday");
-    },7000);
+   setTimeout(() => {
+
+    // Hide fireworks
+    document.getElementById("fireworksCanvas").style.display = "none";
+
+    // Show birthday page
+    const birthday = document.getElementById("birthdaySection");
+
+    birthday.style.display = "flex";
+
+    // Small delay so the browser applies display:flex first
+    setTimeout(() => {
+        birthday.style.opacity = "1";
+    }, 100);
+
+}, 8000); // Fireworks duration
+
+}
+
+/*candle blow*/
+function blowcandle() {
+const flame = document.getElementById("flame");
+const birthdaySection = document.getElementById("birthdaySection");
+const button = document.getElementById("blowBtn");
+
+    // Disable button after first click
+    button.disabled = true;
+
+    // Hide flame immediately
+    flame.style.opacity = "0";
+
+    // Optional: hide button
+    button.style.display = "none";
+
+    // Wait 2 seconds
+    setTimeout(() => {
+
+        // Fade out entire screen
+        birthdaySection.style.transition = "opacity 2s ease";
+        birthdaySection.style.opacity = "0";
+
+        // Remove screen after fade
+        setTimeout(() => {
+            birthdaySection.style.display = "none";
+ showGiftIntro();
+            // Call your next function here
+            // showMemories();
+            // startGallery();
+            // window.location.href = "gallery.html";
+
+        }, 2000);
+
+    }, 2000);
 
 }
