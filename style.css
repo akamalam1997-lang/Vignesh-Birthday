@@ -171,3 +171,83 @@ translateY(-120px);
 }
 
 }
+
+/*loading screen */
+
+/* ===========================
+   Loading Screen
+=========================== */
+
+#loading{
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:999999;
+}
+
+.loading-content{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.loading-content h1{
+    color:#FFD700;
+    font-size:60px;
+    margin-bottom:25px;
+    text-shadow:0 0 20px gold;
+}
+
+#typingText{
+    color:white;
+    font-size:24px;
+    min-height:40px;
+    letter-spacing:1px;
+}
+
+/* ===========================
+   Loading Percentage
+=========================== */
+
+#loadingText{
+    color:#FFD700;
+    font-size:32px;
+    margin-bottom:20px;
+    font-weight:600;
+    text-shadow:0 0 15px gold;
+}
+
+/* ===========================
+   Progress Bar
+=========================== */
+
+.progress{
+    width:450px;
+    height:12px;
+    background:rgba(255,255,255,.15);
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:
+        inset 0 0 8px rgba(255,255,255,.2),
+        0 0 20px rgba(255,215,0,.2);
+}
+
+#loadingBar{
+    width:0%;
+    height:100%;
+    border-radius:30px;
+    background:linear-gradient(
+        90deg,
+        #FFD700,
+        #FFC107,
+        #FFF4B0,
+        #FFD700
+    );
+    transition:width .3s linear;
+    box-shadow:
+        0 0 15px gold,
+        0 0 30px rgba(255,215,0,.7);
+}
