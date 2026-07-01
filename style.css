@@ -264,3 +264,270 @@ translateY(-120px);
     pointer-events:none;
     transition:opacity 3s;
 }
+/*birthday candle*/
+
+#birthdaySection{
+
+position:relative;
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+overflow:hidden;
+
+font-family: 'Brush Script MT', cursive;
+
+color:white;
+
+}
+
+.overlay{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+
+}
+
+.content{
+
+position:relative;
+
+text-align:center;
+
+z-index:2;
+
+}
+
+.content h3{
+
+font-size:30px;
+
+letter-spacing:15px;
+
+color:#ff6666;
+   margin-top:15px;
+font-family: Georgia, serif;
+}
+
+.content h1{
+
+font-size:80px;
+
+font-style:italic;
+
+color:#ff3333;
+
+text-shadow:0 0 20px #ff3333;
+
+}
+
+.content h2{
+
+font-size:60px;
+
+letter-spacing:5px;
+
+font-family: Georgia, serif;
+
+color:#fff;
+   text-shadow:0 0 20px #ff3333;
+
+}
+
+.content p{
+
+margin:20px auto;
+
+width:500px;
+
+line-height:30px;
+
+font-size:15px;
+
+opacity:.9;
+
+}
+
+.cake{
+
+position:relative;
+
+width:220px;
+
+height:200px;
+
+margin:40px auto;
+
+}
+
+.cake-body{
+
+position:absolute;
+
+bottom:0;
+
+width:220px;
+
+height:120px;
+
+background:#432818;
+
+border-radius:10px;
+
+box-shadow:
+
+0 0 30px rgba(255,215,0,.3);
+
+}
+
+.cake-top{
+
+position:absolute;
+
+bottom:105px;
+
+width:220px;
+
+height:25px;
+
+background:#7b2d26;
+
+border-radius:50px;
+
+}
+
+.candle{
+
+position:absolute;
+
+left:50%;
+
+transform:translateX(-50%);
+
+bottom:125px;
+
+width:12px;
+
+height:70px;
+
+background:white;
+
+border-radius:5px;
+
+}
+
+.flame{
+
+position:absolute;
+
+left:50%;
+
+transform:translateX(-50%);
+
+top:-22px;
+
+width:18px;
+
+height:28px;
+
+background:orange;
+
+border-radius:50% 50% 50% 50%;
+
+box-shadow:
+
+0 0 20px yellow,
+
+0 0 40px orange;
+
+animation:flicker .15s infinite alternate;
+
+}
+
+@keyframes flicker{
+
+from{
+
+transform:translateX(-50%) scale(1);
+
+}
+
+to{
+
+transform:translateX(-50%) scale(.8);
+
+}
+
+}
+
+#blowBtn{
+
+margin-top:25px;
+
+padding:15px 35px;
+
+font-size:20px;
+
+border:none;
+
+border-radius:30px;
+
+background:linear-gradient(45deg,#000,#ff6666);
+
+color:white;
+
+cursor:pointer;
+
+box-shadow:0 0 20px #ff3333;
+
+transition:.3s;
+
+}
+
+#blowBtn:hover{
+
+transform:scale(1.05);
+
+}
+#birthdaySection{
+    opacity:1;
+    transition:opacity 2s ease;
+}
+
+#birthdayMessage{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    opacity:0;
+    transition:opacity 3s;
+    z-index:10000;
+    display:flex;
+    opacity:1;
+}
+
+#birthdayMessage h1{
+    color:#ff3333;
+    font-size:70px;
+    text-shadow:0 0 20px gold;
+}
+
+#birthdayMessage h2{
+    color:white;
+    font-size:40px;
+    margin-top:15px;
+}
+
+.showBirthday{
+    opacity:1 !important;
+}
