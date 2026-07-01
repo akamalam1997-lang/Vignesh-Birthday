@@ -272,8 +272,6 @@ position:relative;
 
 height:100vh;
 
-display:flex;
-
 justify-content:center;
 
 align-items:center;
@@ -499,33 +497,9 @@ transform:scale(1.05);
 
 }
 #birthdaySection{
-    opacity:1;
-    transition:opacity 2s ease;
-}
-
-#birthdayMessage{
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    text-align:center;
+    display:none;
     opacity:0;
-    transition:opacity 3s;
-    z-index:10000;
-    display:flex;
-    opacity:1;
-}
-
-#birthdayMessage h1{
-    color:#ff3333;
-    font-size:70px;
-    text-shadow:0 0 20px gold;
-}
-
-#birthdayMessage h2{
-    color:white;
-    font-size:40px;
-    margin-top:15px;
+    transition:opacity 1s ease;
 }
 
 .showBirthday{
