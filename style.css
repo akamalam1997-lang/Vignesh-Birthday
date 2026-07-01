@@ -755,3 +755,235 @@ transform:scale(1.05);
     object-fit:contain;
 
 }
+
+/* final page */
+
+/* ===============================
+   Final Screen
+================================ */
+
+#finalPage{
+
+    position:fixed;
+    inset:0;
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+
+    background:#ff8080;
+
+    z-index:999999;
+
+    overflow:hidden;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+/* Glass Card */
+
+.final-card{
+
+    width:80%;
+    max-width:900px;
+
+    padding:60px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:30px;
+
+    border:1px solid rgba(255,255,255,.3);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.15);
+
+    animation:fadeUp 1.5s ease;
+
+}
+
+/* Heading */
+
+.final-card h1{
+
+    font-size:55px;
+
+    color:white;
+
+    margin-bottom:35px;
+
+    text-shadow:0 3px 10px rgba(0,0,0,.25);
+
+}
+
+/* Paragraph */
+
+.final-card p{
+
+    color:white;
+
+    font-size:24px;
+
+    line-height:42px;
+
+    margin-bottom:25px;
+
+}
+
+/* Love Text */
+
+.loveText{
+
+    font-size:28px;
+
+    font-weight:600;
+
+    margin-top:30px;
+
+}
+
+/* Continue */
+
+.continued{
+
+    margin-top:60px;
+
+    font-size:46px;
+
+    font-weight:700;
+
+    color:white;
+
+    animation:pulse 2s infinite;
+
+}
+
+/* Next Chapter */
+
+.chapter{
+
+    margin-top:20px;
+
+    font-size:28px;
+
+    color:#fff;
+
+}
+
+/* Dream Home */
+
+.home{
+
+    margin-top:10px;
+
+    font-size:34px;
+
+    font-weight:600;
+
+    color:#fff;
+
+}
+
+/* Signature */
+
+.signature{
+
+    margin-top:60px;
+
+    font-size:22px;
+
+    color:white;
+
+    opacity:.9;
+
+}
+
+/* Animation */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes pulse{
+
+    0%,100%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.05);
+
+    }
+
+}
+
+/* final heart */
+
+#finalHearts{
+
+    position:absolute;
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+}
+
+.finalHeart{
+
+    position:absolute;
+
+    bottom:-50px;
+
+    color:white;
+
+    opacity:.4;
+
+    animation:floatHeart 8s linear forwards;
+
+}
+
+@keyframes floatHeart{
+
+    from{
+
+        transform:translateY(0);
+
+        opacity:.5;
+
+    }
+
+    to{
+
+        transform:translateY(-120vh);
+
+        opacity:0;
+
+    }
+
+}
