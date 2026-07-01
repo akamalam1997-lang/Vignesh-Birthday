@@ -198,7 +198,7 @@ const button = document.getElementById("blowBtn");
         // Remove screen after fade
         setTimeout(() => {
             birthdaySection.style.display = "none";
- //showGiftIntro();
+ showGiftIntro();
             // Call your next function here
             // showMemories();
             // startGallery();
@@ -207,5 +207,79 @@ const button = document.getElementById("blowBtn");
         }, 2000);
 
     }, 2000);
+
+}
+
+/* gift open message */
+
+const messages = [
+
+"Dear Vignesh,",
+
+"Today isn't just your birthday...",
+
+"It's the day the person who changed my life forever was born.💖",
+
+"Thank you for every smile...💕",
+
+"Every sacrifice...💕",
+
+"Every laugh...💕",
+
+"And every beautiful memory we've created together.💕"
+
+];
+
+function showGiftIntro(){
+
+    const page=document.getElementById("giftPage");
+    const msg=document.getElementById("giftMessage");
+
+    page.style.display="flex";
+
+    let i=0;
+
+    function next(){
+
+        if(i>=messages.length){
+
+            msg.style.display="none";
+
+            document.getElementById("giftBox").style.display="block";
+
+            return;
+
+        }
+
+        msg.style.opacity=0;
+
+        setTimeout(()=>{
+
+            msg.innerHTML=messages[i];
+
+            msg.style.opacity=1;
+
+            i++;
+
+            setTimeout(next,2500);
+
+        },700);
+
+    }
+
+    next();
+
+}
+function giftboxopen(){
+
+    document.getElementById("giftPage").style.opacity=0;
+
+    setTimeout(()=>{
+
+        document.getElementById("giftPage").style.display="none";
+
+        startPhotoSlideshow();
+
+    },1500);
 
 }
