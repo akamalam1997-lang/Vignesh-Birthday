@@ -1,3 +1,9 @@
+window.addEventListener("load", () => {
+
+    showLoading();
+
+});
+
 /* ==========================================
 Loading Screen
 ========================================== */
@@ -30,9 +36,9 @@ function showLoading(){
 
             setTimeout(()=>{
                hideScene("loading");
-                showScene("welcome");
-startBirthdayFireworks();
-                startTyping();
+              //  showScene("welcome");
+//startBirthdayFireworks();
+                //startTyping();
 
             },600);
 
