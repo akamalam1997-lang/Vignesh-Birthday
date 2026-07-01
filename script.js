@@ -353,7 +353,9 @@ function startPhotoSlideshow() {
 
             if (index >= photos.length) {
                 clearInterval(slideInterval);
+document.getElementById("finalPage").style.display="flex";
 
+    startFinalHearts();
 //setTimeout(()=>{
 
   //  showEndingScreen();
@@ -377,4 +379,28 @@ function startPhotoSlideshow() {
 //{
     slideInterval = setInterval(showSlide, 20000);
 //}
+}
+// Floating hearts for final page
+function startFinalHearts() {
+
+    setInterval(() => {
+
+        const heart = document.createElement("div");
+
+        heart.className = "finalHeart";
+
+        heart.innerHTML = "🤍";
+
+        heart.style.left = Math.random() * 100 + "%";
+
+        heart.style.fontSize = (15 + Math.random() * 25) + "px";
+
+        document.getElementById("finalHearts").appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+
+    }, 500);
+
 }
