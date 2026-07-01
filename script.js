@@ -278,8 +278,103 @@ function giftboxopen(){
 
         document.getElementById("giftPage").style.display="none";
 
-       // startPhotoSlideshow();
+       startPhotoSlideshow();
 
     },1500);
 
+}
+/* image */
+const photos = [
+{
+    title:"❤️ A Moment That Changed Everything 💍",
+    image:"https://github.com/user-attachments/assets/6f551680-f558-439e-aa04-ee7ad43f9e73"
+},
+{
+    title:"💕 Bound by Love",
+    image:"https://github.com/user-attachments/assets/2d321fc7-2d53-44b0-bef1-44e07d3f5c45"
+},
+
+{
+    title:"😂 Copy... Paste... Perfect!",
+    image:"https://github.com/user-attachments/assets/b8fa9add-76f7-4454-b530-b63b59239012"
+},
+
+{
+    title:"💖 Your Happiest Chapter Began Here",
+    image:"https://github.com/user-attachments/assets/999397fd-daa0-4105-be80-1fda2552bc74"
+},
+
+{
+    title:"🥰 I Married One, Now I Have Two!",
+    image:"https://github.com/user-attachments/assets/a831713a-d374-48f0-998b-44bc1e42760b"
+},
+{
+    title:"🏡 Waiting for This Dream to Come True.",
+    image:"https://github.com/user-attachments/assets/68a60bda-b9fc-402a-b880-31b3197ec478"
+}
+];
+let slideInterval;
+
+function startPhotoSlideshow() {
+
+    const slider = document.getElementById("photoSlider");
+    const image = document.getElementById("slideImage");
+    const title = document.getElementById("slideTitle");
+
+    slider.style.display = "flex";
+
+    let index = 0;
+
+ function showSlide() {
+
+    // Fade out current slide
+    title.style.opacity = "0";
+    image.parentElement.style.opacity = "0";
+    image.parentElement.style.transform = "scale(0.95)";
+
+    setTimeout(() => {
+
+        // Preload the next image
+        const nextImg = new Image();
+        nextImg.src = photos[index].image;
+
+        nextImg.onload = () => {
+
+            // Update content only after image is loaded
+            title.innerHTML = photos[index].title;
+            image.src = nextImg.src;
+
+            // Fade in together
+            title.style.opacity = "1";
+            image.parentElement.style.opacity = "1";
+            image.parentElement.style.transform = "scale(1)";
+
+            index++;
+
+            if (index >= photos.length) {
+                clearInterval(slideInterval);
+
+//setTimeout(()=>{
+
+  //  showEndingScreen();
+
+//},1000);
+                // Optional: Call your next function here
+                // showFinalMessage();
+
+                return;
+            }
+        };
+
+    }, 700);
+}
+
+    showSlide();
+//if (index == photos.length) {
+  //  slideInterval = setInterval(showSlide, 25000);
+//}
+    //else
+//{
+    slideInterval = setInterval(showSlide, 20000);
+//}
 }
