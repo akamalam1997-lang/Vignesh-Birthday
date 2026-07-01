@@ -506,3 +506,191 @@ transform:scale(1.05);
 .showBirthday{
     opacity:1 !important;
 }
+
+/*gift*/
+
+/* ===============================
+   Gift Intro Screen
+================================== */
+
+#giftPage{
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    overflow:hidden;
+    z-index:99999;
+    opacity:1;
+    transition:opacity 1.5s ease;
+}
+
+/* Optional: Golden stars background */
+#giftPage::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(255,215,0,.8) 1px, transparent 2px),
+        radial-gradient(circle at 70% 20%, rgba(255,215,0,.6) 1px, transparent 2px),
+        radial-gradient(circle at 80% 80%, rgba(255,215,0,.7) 1px, transparent 2px),
+        radial-gradient(circle at 40% 70%, rgba(255,215,0,.6) 1px, transparent 2px),
+        radial-gradient(circle at 15% 85%, rgba(255,215,0,.8) 1px, transparent 2px);
+    background-size:300px 300px;
+    animation:starsMove 25s linear infinite;
+    opacity:.5;
+}
+
+@keyframes starsMove{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-120px);
+    }
+
+}
+
+/* ================================= */
+
+#giftMessage{
+
+    position:relative;
+    z-index:2;
+
+    color:#ff8080;
+
+    font-size:55px;
+
+    font-family: 'Brush Script MT', cursive;
+
+    width:80%;
+
+    max-width:900px;
+
+    line-height:1.5;
+
+    text-shadow:
+        0 0 15px #ff8080,
+        0 0 30px #ff8080;
+
+    opacity:0;
+
+    transition:opacity .8s ease;
+
+}
+
+/* ================================= */
+
+#giftBox{
+
+    position:relative;
+
+    z-index:2;
+
+    display:none;
+
+    animation:fadeUp 1.2s ease;
+
+}
+
+.gift-icon{
+
+    font-size:140px;
+
+    animation:float 2s ease-in-out infinite;
+
+}
+
+#giftBox h2{
+
+    margin-top:20px;
+
+    color:#ff4d4d;
+
+    font-size:34px;
+
+    font-weight:300;
+
+    letter-spacing:1px;
+
+}
+
+#openGift{
+
+    margin-top:50px;
+
+    padding:18px 45px;
+
+    font-size:24px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    color:#ffffff;
+
+    background:linear-gradient(45deg,#ff4d4d,#ff8080);
+
+    box-shadow:
+        0 0 20px #ff8080,
+        0 0 50px #ff8080;
+
+    transition:.3s;
+
+}
+
+#openGift:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+        0 0 30px #ff6666,
+        0 0 60px #ff6666;
+
+}
+
+/* ================================= */
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(50px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
