@@ -278,7 +278,7 @@ function giftboxopen(){
 
         document.getElementById("giftPage").style.display="none";
 
-        startPhotoSlideshow();
+       // startPhotoSlideshow();
 
     },1500);
 
