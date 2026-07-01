@@ -11,35 +11,4 @@
 <img width="1404" height="1120" alt="future house" src="https://github.com/user-attachments/assets/68a60bda-b9fc-402a-b880-31b3197ec478" />
 <img width="2672" height="3693" alt="wedding" src="https://github.com/user-attachments/assets/6f551680-f558-439e-aa04-ee7ad43f9e73" />
 
-Vignesh-Birthday
-/
-README.md
-in
-main
 
-Edit
-
-Preview
-Indent mode
-
-Spaces
-Indent size
-
-2
-Line wrap mode
-
-Soft wrap
-Editing README.md file contents
-  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
